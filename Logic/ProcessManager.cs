@@ -13,6 +13,7 @@ namespace Logic
 		/// <returns></returns>
 		public List<DTO.Customer> GetCustomers()
 		{
+
 			throw new NotImplementedException();
 		}
 
