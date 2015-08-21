@@ -6,8 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using DTO;
 using DTO.Context;
+using DTO.Entities;
 
 namespace DeveloperTestWebUI.Controllers
 {
@@ -18,7 +18,8 @@ namespace DeveloperTestWebUI.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            return View(db.Products.ToList());
+            var products = db.Products.Include(p => p.Brand).Include(p => p.Colour).Include(p => p.Size);
+            return View(products.ToList());
         }
 
         // GET: Products/Details/5
@@ -39,6 +40,9 @@ namespace DeveloperTestWebUI.Controllers
         // GET: Products/Create
         public ActionResult Create()
         {
+            ViewBag.BrandId = new SelectList(db.Brands, "BrandId", "BrandName");
+            ViewBag.ColourId = new SelectList(db.Colours, "ColourId", "ColourName");
+            ViewBag.SizeId = new SelectList(db.Sizes, "SizeId", "SizeName");
             return View();
         }
 
@@ -47,7 +51,7 @@ namespace DeveloperTestWebUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductId,ProductName,CostPrice,SellPrice,DiscountedSellPrice,Brand,Colour,Size")] Product product)
+        public ActionResult Create([Bind(Include = "ProductId,ProductName,CostPrice,SellPrice,DiscountedSellPrice,BrandId,ColourId,SizeId")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -56,6 +60,9 @@ namespace DeveloperTestWebUI.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.BrandId = new SelectList(db.Brands, "BrandId", "BrandName", product.BrandId);
+            ViewBag.ColourId = new SelectList(db.Colours, "ColourId", "ColourName", product.ColourId);
+            ViewBag.SizeId = new SelectList(db.Sizes, "SizeId", "SizeName", product.SizeId);
             return View(product);
         }
 
@@ -71,6 +78,9 @@ namespace DeveloperTestWebUI.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.BrandId = new SelectList(db.Brands, "BrandId", "BrandName", product.BrandId);
+            ViewBag.ColourId = new SelectList(db.Colours, "ColourId", "ColourName", product.ColourId);
+            ViewBag.SizeId = new SelectList(db.Sizes, "SizeId", "SizeName", product.SizeId);
             return View(product);
         }
 
@@ -79,7 +89,7 @@ namespace DeveloperTestWebUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,ProductName,CostPrice,SellPrice,DiscountedSellPrice,Brand,Colour,Size")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductId,ProductName,CostPrice,SellPrice,DiscountedSellPrice,BrandId,ColourId,SizeId")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +97,9 @@ namespace DeveloperTestWebUI.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.BrandId = new SelectList(db.Brands, "BrandId", "BrandName", product.BrandId);
+            ViewBag.ColourId = new SelectList(db.Colours, "ColourId", "ColourName", product.ColourId);
+            ViewBag.SizeId = new SelectList(db.Sizes, "SizeId", "SizeName", product.SizeId);
             return View(product);
         }
 

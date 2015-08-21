@@ -375,9 +375,9 @@
     <Diagrams>
       <Diagram Name="DeveloperTest">
         <EntityTypeShape EntityType="DeveloperTestModel.Brand" Width="1.5" PointX="0.75" PointY="1.625" Height="1.5956835937499998" IsExpanded="true" />
-        <EntityTypeShape EntityType="DeveloperTestModel.Colour" Width="1.5" PointX="0.75" PointY="4.75" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeveloperTestModel.Colour" Width="1.5" PointX="6.625" PointY="3" Height="1.5956835937499996" IsExpanded="true" />
         <EntityTypeShape EntityType="DeveloperTestModel.Customer" Width="1.5" PointX="5" PointY="4.875" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="DeveloperTestModel.DiscountGroup" Width="1.5" PointX="2.75" PointY="4.875" Height="1.7879850260416657" IsExpanded="true" />
+        <EntityTypeShape EntityType="DeveloperTestModel.DiscountGroup" Width="1.5" PointX="0.875" PointY="5" Height="1.7879850260416657" IsExpanded="true" />
         <EntityTypeShape EntityType="DeveloperTestModel.Product" Width="1.5" PointX="3" PointY="1" Height="2.9417936197916656" IsExpanded="true" />
         <EntityTypeShape EntityType="DeveloperTestModel.Size" Width="1.5" PointX="0.75" PointY="7.125" Height="1.5956835937500005" IsExpanded="true" />
         <EntityTypeShape EntityType="DeveloperTestModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" Height="1.9802864583333317" IsExpanded="true" />

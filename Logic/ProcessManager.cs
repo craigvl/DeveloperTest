@@ -2,19 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using DTO.Entities;
+using DTO.Context;
 
 namespace Logic
 {
 	public class ProcessManager
-	{
+	{     
+        private DTOContext _context;
+
+        public ProcessManager(DTOContext context) 
+        { 
+            _context = context; 
+        } 
 		/// <summary>
 		/// Gets all customers.
 		/// </summary>
 		/// <returns></returns>
-		public List<DTO.Customer> GetCustomers()
+		public List<Customer> GetCustomers()
 		{
-
-			throw new NotImplementedException();
+            return _context.Customers.ToList();
 		}
 
 		/// <summary>
@@ -22,9 +29,18 @@ namespace Logic
 		/// </summary>
 		/// <param name="searchParameters">The product search parameters.</param>
 		/// <returns></returns>
-		public List<DTO.Product> ProductSearch(DTO.ProductSearchParameters searchParameters)
+		public List<Product> ProductSearch(DTO.ProductSearchParameters searchParameters)
 		{
-			throw new NotImplementedException();
+            IQueryable<Product> Products;
+            //Get all products first
+            Products = _context.Products;
+
+            if (searchParameters.BrandIds.Count() > 0)
+            {
+                Products = Products.Where(x => searchParameters.BrandIds.Any(i => i == x.BrandId ));
+            }
+            
+            return Products.ToList();
 		}
 
 		/// <summary>
@@ -35,7 +51,7 @@ namespace Logic
 		/// <param name="customerId">The customer id.</param>
 		/// <param name="searchParameters">The product search parameters.</param>
 		/// <returns></returns>
-		public List<DTO.Product> CustomerProductSearch(int customerId, DTO.ProductSearchParameters searchParameters)
+		public List<Product> CustomerProductSearch(int customerId, DTO.ProductSearchParameters searchParameters)
 		{
 			throw new NotImplementedException();
 		}

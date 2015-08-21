@@ -50,9 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\DTOContext.cs" />
-    <Compile Include="Customer.cs" />
-    <Compile Include="DiscountGroup.cs" />
-    <Compile Include="Product.cs" />
+    <Compile Include="Entities\Brand.cs" />
+    <Compile Include="Entities\Colour.cs" />
+    <Compile Include="Entities\Customer.cs" />
+    <Compile Include="Entities\DiscountGroup.cs" />
+    <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\Size.cs" />
     <Compile Include="ProductSearchParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

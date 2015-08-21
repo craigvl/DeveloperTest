@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DTO.Product>
+﻿@model IEnumerable<DTO.Entities.Product>
 
 @{
     ViewBag.Title = "Index";
@@ -12,6 +12,15 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Brand.BrandName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Colour.ColourName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Size.SizeName)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.ProductName)
         </th>
         <th>
@@ -23,20 +32,20 @@
         <th>
             @Html.DisplayNameFor(model => model.DiscountedSellPrice)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Brand)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Colour)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Size)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Brand.BrandName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Colour.ColourName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Size.SizeName)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.ProductName)
         </td>
@@ -48,15 +57,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DiscountedSellPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Brand)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Colour)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Size)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
