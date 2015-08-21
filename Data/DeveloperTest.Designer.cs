@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -186,6 +187,7 @@ namespace Data
         private ObjectSet<sysdiagram> _sysdiagrams;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -245,11 +247,11 @@ namespace Data
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -276,6 +278,7 @@ namespace Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -330,6 +333,7 @@ namespace Data
         partial void OnBrandNameChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -356,6 +360,7 @@ namespace Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -382,6 +387,7 @@ namespace Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -436,6 +442,7 @@ namespace Data
         partial void OnColourNameChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -462,6 +469,7 @@ namespace Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -490,6 +498,7 @@ namespace Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -568,6 +577,7 @@ namespace Data
         partial void OnDiscountGroupIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -610,6 +620,7 @@ namespace Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -638,6 +649,7 @@ namespace Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -716,6 +728,7 @@ namespace Data
         partial void OnDiscountPercentageChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -742,6 +755,7 @@ namespace Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -772,6 +786,7 @@ namespace Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -946,6 +961,7 @@ namespace Data
         partial void OnSizeIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1064,6 +1080,7 @@ namespace Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1090,6 +1107,7 @@ namespace Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1144,6 +1162,7 @@ namespace Data
         partial void OnSizeNameChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1170,6 +1189,7 @@ namespace Data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1198,6 +1218,7 @@ namespace Data
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1324,9 +1345,11 @@ namespace Data
         partial void OndefinitionChanged();
 
         #endregion
+
     
     }
 
     #endregion
+
     
 }
