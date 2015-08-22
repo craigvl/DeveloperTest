@@ -35,9 +35,22 @@ namespace Logic
             //Get all products first
             Products = _context.Products;
 
+            //If brand ID's provided then add these to the where clause
             if (searchParameters.BrandIds.Count() > 0)
             {
                 Products = Products.Where(x => searchParameters.BrandIds.Any(i => i == x.BrandId ));
+            }
+
+            //If size ID's provided then add these to the where clause
+            if (searchParameters.SizeIds.Count() > 0)
+            {
+                Products = Products.Where(x => searchParameters.SizeIds.Any(i => i == x.SizeId));
+            }
+
+            //If colour ID's provided then add these to the where clause
+            if (searchParameters.ColourIds.Count() > 0)
+            {
+                Products = Products.Where(x => searchParameters.ColourIds.Any(i => i == x.ColourId));
             }
             
             return Products.ToList();
@@ -53,7 +66,28 @@ namespace Logic
 		/// <returns></returns>
 		public List<Product> CustomerProductSearch(int customerId, DTO.ProductSearchParameters searchParameters)
 		{
-			throw new NotImplementedException();
+            List<Product> Products;
+            //Perform search on products
+            Products = ProductSearch(searchParameters);
+            //Lookup customer that has been provided
+            Customer _Customer = _context.Customers.Include("DiscountGroup").Where(c => c.CustomerId == customerId).FirstOrDefault();
+            if (_Customer != null)
+            {
+                //We have found a customer so lets update the discount price
+                foreach (Product p in Products)
+                {
+                    p.DiscountedSellPrice = CalculateDiscountedPrice((decimal)_Customer.DiscountGroup.DiscountPercentage, p.SellPrice, p.CostPrice);
+                }
+            }
+
+            return Products;
 		}
+
+        //Calculate discount amount for product
+        public decimal CalculateDiscountedPrice(decimal discountPercentage, decimal sellPrice, decimal costPrice)
+        {
+            decimal discountAmount = ((discountPercentage / 100) * sellPrice);
+            return ((sellPrice - discountAmount) < costPrice ? costPrice : (sellPrice - discountAmount));
+        }
 	}
 }

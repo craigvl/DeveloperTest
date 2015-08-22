@@ -15,8 +15,8 @@ namespace DTO.Entities
 		public string ProductName { get; set; }
 		public decimal CostPrice { get; set; }
 		public decimal SellPrice { get; set; }
-		public decimal? DiscountedSellPrice { get; set; }
-
+        [NotMapped]
+        public decimal? DiscountedSellPrice { get; set; }
         public int BrandId { get; set; }
         public int ColourId { get; set; }
         public int SizeId { get; set; }

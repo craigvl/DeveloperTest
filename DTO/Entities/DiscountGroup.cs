@@ -11,6 +11,6 @@ namespace DTO.Entities
         [Key]
 		public int DiscountGroupId { get; set; }
 		public string DiscountGroupName { get; set; }
-		public int DiscountPercentage { get; set; }
+		public byte? DiscountPercentage { get; set; }
 	}
 }
