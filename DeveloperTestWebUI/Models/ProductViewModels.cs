@@ -17,5 +17,6 @@ namespace DeveloperTestWebUI.Models
         public IEnumerable<SelectListItem> Sizes { get; set; }
         public IEnumerable<SelectListItem> Colours { get; set; }
         public IEnumerable<SelectListItem> Brands { get; set; }
+        public IEnumerable<SelectListItem> Customers { get; set; }
     }
 }

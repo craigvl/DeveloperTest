@@ -11,19 +11,24 @@
 {
     <div class="col-lg-12">
         <div class="row">
-            <div class="col-md-4 col-lg-4">
+            <div class="col-md-3">
                 <h4>
                     @Html.DropDownList("SizeID", new SelectList(Model.Sizes, "Value", "Text"), "Select a size..", new { @class = "form-control" })
                 </h4>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <h4>
                     @Html.DropDownList("ColourID", new SelectList(Model.Colours, "Value", "Text"), "Select a colour..", new { @class = "form-control" })
                 </h4>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <h4>
                     @Html.DropDownList("BrandID", new SelectList(Model.Brands, "Value", "Text"), "Select a brand..", new { @class = "form-control" })
+                </h4>
+            </div>
+            <div class="col-md-3">
+                <h4>
+                    @Html.DropDownList("CustomerID", new SelectList(Model.Customers, "Value", "Text"), "Select a customer..", new { @class = "form-control" })
                 </h4>
             </div>
         </div>

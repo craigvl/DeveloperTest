@@ -40,6 +40,11 @@ namespace DeveloperTestWebUI.Controllers
                    Value = x.ColourId.ToString(),
                    Text = x.ColourName
                }),
+               Customers = processManager.GetCustomers().Select(x => new SelectListItem
+               {
+                   Value = x.CustomerId.ToString(),
+                   Text = x.CustomerName
+               }),
                Products = processManager.GetProducts() 
             };
            
@@ -47,7 +52,7 @@ namespace DeveloperTestWebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(string searchString , int SizeID = -1, int BrandID = -1, int ColourID = -1)
+        public ActionResult Index(string searchString , int SizeID = -1, int BrandID = -1, int ColourID = -1, int CustomerID = -1)
         {
             
             ProductSearchParameters _Params = new ProductSearchParameters();
@@ -69,11 +74,9 @@ namespace DeveloperTestWebUI.Controllers
 
             if (searchString.Length > 0)
             {
-
                 _Params.SearchString = searchString;
-
             }
- 
+
             ProductSearchModel _ProductViewModel = new ProductSearchModel
             {
                 Sizes = processManager.GetSizes().Select(x => new SelectListItem
@@ -90,11 +93,23 @@ namespace DeveloperTestWebUI.Controllers
                 {
                     Value = x.ColourId.ToString(),
                     Text = x.ColourName
-                })
+                }),
+                Customers = processManager.GetCustomers().Select(x => new SelectListItem
+               {
+                   Value = x.CustomerId.ToString(),
+                   Text = x.CustomerName
+               })
             };
 
-            _ProductViewModel.Products = processManager.ProductSearch(_Params);
 
+            if (CustomerID != -1)
+            {
+                _ProductViewModel.Products = processManager.CustomerProductSearch(CustomerID, _Params);
+            }
+            else
+            {
+                _ProductViewModel.Products = processManager.ProductSearch(_Params);
+            }
             return View(_ProductViewModel);
 
         }
