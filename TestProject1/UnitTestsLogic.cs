@@ -78,7 +78,7 @@ namespace Test
         [TestMethod]
         public void ProcessManagerCustomerDiscount()
         {
-            //Test function that calculates discount
+            //Test function that calculates discount for a customer
             DTOContext _DTOC = new DTOContext();
             ProcessManager _ProcessManager = new ProcessManager(_DTOC);
             //Since discount is more than cost price should return cost price.
@@ -92,7 +92,7 @@ namespace Test
         {
             DTOContext _DTOC = new DTOContext();
             ProcessManager _ProcessManager = new ProcessManager(_DTOC);
-            ProductSearchParameters _ProductSearchParameters = new ProductSearchParameters { SearchString = "Tee" };
+            ProductSearchParameters _ProductSearchParameters = new ProductSearchParameters { SearchString = "Tee Nike" };
             List<Product> products = _ProcessManager.ProductSearch (_ProductSearchParameters);
             Assert.IsTrue(products.Count() < _DTOC.Products.Count());
         }

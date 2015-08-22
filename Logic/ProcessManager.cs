@@ -125,7 +125,7 @@ namespace Logic
             return Products;
 		}
 
-        //Calculate discount amount for product
+        //Calculate discount amount for product based on a percentage
         public decimal CalculateDiscountedPrice(decimal discountPercentage, decimal sellPrice, decimal costPrice)
         {
             decimal discountAmount = ((discountPercentage / 100) * sellPrice);
@@ -135,14 +135,15 @@ namespace Logic
         //Search for products via search string
         public IQueryable<Product> SearchForProductsViaString(string searchString, IQueryable<Product> products)
         {
+            //Split search words into array
             string[] searchTerms = searchString.Split(null);
-            List<string> searchTermsList = searchTerms.ToList();
 
+            //Loop through each keyword and look for a match
             foreach (string item in searchTerms)
 			{
-                products = products.Where(p => p.ProductName.Contains(item) 
-                                          || p.Brand.BrandName.Contains(item)
-                                          || p.Colour.ColourName.Contains(item));
+                products = products.Where(p => p.ProductName.ToLower().Contains(item.ToLower()) 
+                                          || p.Brand.BrandName.ToLower().Contains(item.ToLower())
+                                          || p.Colour.ColourName.ToLower().Contains(item.ToLower()));
             }
 
             return products;                                    

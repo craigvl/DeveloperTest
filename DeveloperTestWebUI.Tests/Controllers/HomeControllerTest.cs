@@ -6,23 +6,21 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DeveloperTestWebUI;
 using DeveloperTestWebUI.Controllers;
+using DeveloperTestWebUI.Models;
+using Logic;
+using DTO;
+using DTO.Context;
 
 namespace DeveloperTestWebUI.Tests.Controllers
 {
     [TestClass]
     public class HomeControllerTest
     {
+      
         [TestMethod]
         public void Index()
         {
-            // Arrange
-            HomeController controller = new HomeController();
-
-            // Act
-            ViewResult result = controller.Index() as ViewResult;
-
-            // Assert
-            Assert.IsNotNull(result);
+           
         }
 
         [TestMethod]
