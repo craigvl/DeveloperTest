@@ -24,6 +24,15 @@ namespace Logic
             return _context.Customers.ToList();
 		}
 
+        /// <summary>
+        /// Gets all sizes.
+        /// </summary>
+        /// <returns></returns>
+        public List<Size> GetSizes()
+        {
+            return _context.Sizes.ToList();
+        }
+
 		/// <summary>
 		/// Performs a search for products using the supplied search parameters and returns a list of Product objects
 		/// </summary>

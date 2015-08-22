@@ -8,16 +8,23 @@ using System.Web;
 using System.Web.Mvc;
 using DTO.Context;
 using DTO.Entities;
+using Logic;
 
 namespace DeveloperTestWebUI.Controllers
 {
     public class ProductsController : Controller
     {
         private DTOContext db = new DTOContext();
+        public ProcessManager processManager;
+
+        public ProductsController()
+        {
+            processManager = new ProcessManager(db);
+        }
 
         // GET: Products
         public ActionResult Index()
-        {
+        {   
             var products = db.Products.Include(p => p.Brand).Include(p => p.Colour).Include(p => p.Size);
             return View(products.ToList());
         }
