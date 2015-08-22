@@ -47,7 +47,7 @@ namespace DeveloperTestWebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(int SizeID = -1, int BrandID = -1, int ColourID = -1)
+        public ActionResult Index(string searchString , int SizeID = -1, int BrandID = -1, int ColourID = -1)
         {
             
             ProductSearchParameters _Params = new ProductSearchParameters();
@@ -65,6 +65,13 @@ namespace DeveloperTestWebUI.Controllers
             if (ColourID != -1)
             {
                 _Params.ColourIds.Add(ColourID);
+            }
+
+            if (searchString.Length > 0)
+            {
+
+                _Params.SearchString = searchString;
+
             }
  
             ProductSearchModel _ProductViewModel = new ProductSearchModel

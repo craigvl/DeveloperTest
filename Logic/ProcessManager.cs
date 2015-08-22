@@ -89,6 +89,11 @@ namespace Logic
             {
                 Products = Products.Where(x => searchParameters.ColourIds.Any(i => i == x.ColourId));
             }
+
+            if(!String.IsNullOrEmpty(searchParameters.SearchString))
+            {
+                Products = SearchForProductsViaString(searchParameters.SearchString, Products);
+            }
             
             return Products.ToList();
 		}
@@ -125,6 +130,22 @@ namespace Logic
         {
             decimal discountAmount = ((discountPercentage / 100) * sellPrice);
             return ((sellPrice - discountAmount) < costPrice ? costPrice : (sellPrice - discountAmount));
+        }
+
+        //Search for products via search string
+        public IQueryable<Product> SearchForProductsViaString(string searchString, IQueryable<Product> products)
+        {
+            string[] searchTerms = searchString.Split(null);
+            List<string> searchTermsList = searchTerms.ToList();
+
+            foreach (string item in searchTerms)
+			{
+                products = products.Where(p => p.ProductName.Contains(item) 
+                                          || p.Brand.BrandName.Contains(item)
+                                          || p.Colour.ColourName.Contains(item));
+            }
+
+            return products;                                    
         }
 	}
 }

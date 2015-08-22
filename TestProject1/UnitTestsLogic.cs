@@ -86,5 +86,15 @@ namespace Test
             //Since discount is less than cost price should return discount price.
             Assert.IsTrue(_ProcessManager.CalculateDiscountedPrice(50, 100, 49) == 50);
         }
+
+        [TestMethod]
+        public void ProcessManagerStringSearch()
+        {
+            DTOContext _DTOC = new DTOContext();
+            ProcessManager _ProcessManager = new ProcessManager(_DTOC);
+            ProductSearchParameters _ProductSearchParameters = new ProductSearchParameters { SearchString = "Tee" };
+            List<Product> products = _ProcessManager.ProductSearch (_ProductSearchParameters);
+            Assert.IsTrue(products.Count() < _DTOC.Products.Count());
+        }
     }
 }
