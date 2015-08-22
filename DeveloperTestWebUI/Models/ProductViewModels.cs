@@ -13,6 +13,9 @@ namespace DeveloperTestWebUI.Models
 
     public class ProductSearchModel
     {
+        public List<Product> Products { get; set; }
         public IEnumerable<SelectListItem> Sizes { get; set; }
+        public IEnumerable<SelectListItem> Colours { get; set; }
+        public IEnumerable<SelectListItem> Brands { get; set; }
     }
 }

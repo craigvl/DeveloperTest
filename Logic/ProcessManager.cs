@@ -14,7 +14,17 @@ namespace Logic
         public ProcessManager(DTOContext context) 
         { 
             _context = context; 
-        } 
+        }
+
+        /// <summary>
+        /// Gets all products.
+        /// </summary>
+        /// <returns></returns>
+        public List<Product> GetProducts()
+        {
+            return _context.Products.ToList();
+        }
+
 		/// <summary>
 		/// Gets all customers.
 		/// </summary>
@@ -31,6 +41,24 @@ namespace Logic
         public List<Size> GetSizes()
         {
             return _context.Sizes.ToList();
+        }
+
+        /// <summary>
+        /// Gets all Brands.
+        /// </summary>
+        /// <returns></returns>
+        public List<Brand> GetBrands()
+        {
+            return _context.Brands.ToList();
+        }
+
+        /// <summary>
+        /// Gets all Colours.
+        /// </summary>
+        /// <returns></returns>
+        public List<Colour> GetColours()
+        {
+            return _context.Colours.ToList();
         }
 
 		/// <summary>
