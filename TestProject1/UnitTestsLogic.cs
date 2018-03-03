@@ -78,7 +78,7 @@ namespace Test
         [TestMethod]
         public void ProcessManagerCustomerDiscount()
         {
-            //Test function that calculates discount for a customer
+            //Test function that calculates discount for a customer...
             DTOContext _DTOC = new DTOContext();
             ProcessManager _ProcessManager = new ProcessManager(_DTOC);
             //Since discount is more than cost price should return cost price.
